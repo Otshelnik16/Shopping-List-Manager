@@ -1,1 +1,152 @@
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+.yarn-integrity
+.npm
+*.tgz
+# Сборка
+build/
+dist/
+.out/
+# Кэши сборщиков
+.cache/
+.parcel-cache/
+*.tsbuildinfo
+# Environment (frontend)
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+# Логи
+logs/
+*.log
+npm-debug.log*
+report.*.json
 
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+.lock-wscript
+# Coverage / тесты
+coverage/
+*.lcov
+.nyc_output/
+lib-cov/
+# Compiled addons
+build/Release
+# SQLite (локальное тестирование)
+*.sqlite
+*.sqlite3
+*.db
+
+# Миграции (исходники оставляем)
+migrations/*.sql
+!migrations/.gitkeep
+!migrations/*.js
+# VS Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+# IntelliJ / WebStorm
+.idea/
+*.iml
+*.ipr
+*.iws
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.fuse_hidden*
+.Trash-*
+.nfs*
+# Переменные окружения (ОБЯЗАТЕЛЬНО!)
+.env
+.env.*
+!.env.example
+# Приватные ключи
+*.key
+*.pem
+*.crt
+*.p12
+*.pfx
+*.pub
+id_rsa
+id_rsa.*
+*.ppk
+*.token
+*.secret
+# Vercel
+.vercel/
+# Render
+render.yaml
+!.render.yaml
+# Serverless / Firebase
+.serverless/
+.firebase/
+# Docker (опционально)
+docker-compose.override.yml
+*.dockerignore
+test/
+tests/
+__tests__/
+*.test.js
+*.spec.js
+*.test.ts
+*.spec.ts
+jest.config.*
+mocha.opts
+# Временные файлы
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+*.bak
+# Документы (если не нужны в репо)
+*.docx
+*.pdf
+!.pdf
+# Архивы
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z
+# Кэши линтеров
+.eslintcache
+.stylelintcache
+# REPL history
+.node_repl_history
+# Макеты и скриншоты
+screenshots/
+!mockups/.gitkeep
+# Временные папки разработки
+temp/
+tmp/
+.cache-loader/
