@@ -3,39 +3,43 @@ import database
 
 app = Flask(__name__)
 
-# 3.1 Функция index()
 @app.route('/')
 def index():
+    """Главная страница: отображает список всех товаров."""
     conn = database.get_db_connection()
-    # Запрашиваем все привычки из таблицы habits
-    habits = conn.execute('SELECT * FROM habits ORDER BY id DESC').fetchall()
+    items = conn.execute('SELECT * FROM shopping_items ORDER BY id DESC').fetchall()
     conn.close()
-    return render_template('index.html', habits=habits)
+    return render_template('index.html', items=items)
 
-# 3.2 Функция add_habit()
 @app.route('/add', methods=['POST'])
-def add_habit():
-    title = request.form['title']
-    goal = request.form['goal']
+def add_item():
+    """Добавляет новый товар в список покупок."""
+    name = request.form['name']
+    quantity = request.form['quantity']
     
     conn = database.get_db_connection()
-    # Вставляем новую привычку в БД
-    conn.execute('INSERT INTO habits (title, goal) VALUES (?, ?)', 
-                 (title, goal))
+    conn.execute('INSERT INTO shopping_items (name, quantity) VALUES (?, ?)',
+                 (name, quantity))
     conn.commit()
     conn.close()
-    # После добавления возвращаемся на главную
     return redirect(url_for('index'))
 
-# 3.3 Функция delete_habit()
-@app.route('/delete/<int:id>')
-def delete_habit(id):
+@app.route('/purchase/<int:item_id>')
+def purchase_item(item_id):
+    """Отмечает товар как купленный."""
     conn = database.get_db_connection()
-    # Удаляем привычку по ID
-    conn.execute('DELETE FROM habits WHERE id = ?', (id,))
+    conn.execute('UPDATE shopping_items SET is_purchased = 1 WHERE id = ?', (item_id,))
     conn.commit()
     conn.close()
-    # После удаления возвращаемся на главную
+    return redirect(url_for('index'))
+
+@app.route('/delete/<int:item_id>')
+def delete_item(item_id):
+    """Удаляет товар из списка."""
+    conn = database.get_db_connection()
+    conn.execute('DELETE FROM shopping_items WHERE id = ?', (item_id,))
+    conn.commit()
+    conn.close()
     return redirect(url_for('index'))
 
 if __name__ == '__main__':
